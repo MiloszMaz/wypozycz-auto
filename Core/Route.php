@@ -18,8 +18,8 @@ class Route
 
     private function handleRouteGet($get): void
     {
-        $projectDirectoryUrl = str_replace('\\', '/', __PROJECT_DIR__);
-        $projectDirectoryUrl = str_replace($_SERVER['CONTEXT_DOCUMENT_ROOT'], '', $projectDirectoryUrl);
+        $projectDirectorySeparatorServer = str_replace('\\', '/', __PROJECT_DIR__);
+        $projectDirectoryUrl = str_replace($_SERVER['CONTEXT_DOCUMENT_ROOT'], '', $projectDirectorySeparatorServer);
         $projectDirectoryUrl .= '/public';
 
         $requestUrl = str_replace($projectDirectoryUrl, '', $_SERVER['REQUEST_URI']);
@@ -29,7 +29,8 @@ class Route
             $func = $get[$requestUrl]['func'];
             require_once __PROJECT_DIR__.'/Controller/'.$class.'.php';
 
-            $currentController = new $class;
+            $classWithNamespace = '\Controller\\'.$class;
+            $currentController = new $classWithNamespace;
             $currentController->$func();
         }
     }

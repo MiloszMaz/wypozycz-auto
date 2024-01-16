@@ -7,8 +7,6 @@ class App
 {
     public function __construct()
     {
-        echo 'asdsadasd';
-
         new Route();
     }
 }

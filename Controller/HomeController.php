@@ -9,7 +9,7 @@ class HomeController extends Controller
     {
         echo '22222';
 
-        return $this->view('index', [
+        $this->view('index', [
 
         ]);
     }

@@ -2,4 +2,4 @@
 
 require_once '../App.php';
 
-$GLOBALS['app'] = new App();
+new App();
