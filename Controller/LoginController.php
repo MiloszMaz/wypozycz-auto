@@ -3,7 +3,7 @@ namespace Controller;
 
 use Controller\Controller;
 
-class HomeController extends Controller
+class LoginController extends Controller
 {
     public function Index()
     {

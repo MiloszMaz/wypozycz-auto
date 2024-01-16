@@ -1,0 +1,38 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    color: #000;
+}
+a {
+    color: #000;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+menu {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+menu li.menu-site-item {
+    flex: 1 1 auto;
+    display: block;
+}
+menu li.menu-site-item a {
+    background: #865555;
+    padding: 2em 0;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    width: 100%;
+    border: 3px solid #845151;
+    color: #fff;
+}
+menu li.menu-site-item:hover a {
+    background: #ffb5b5;
+    border: 3px solid #ffe6e6;
+}

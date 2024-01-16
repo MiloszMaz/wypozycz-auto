@@ -23,6 +23,8 @@ class Route
         $projectDirectoryUrl .= '/public';
 
         $requestUrl = str_replace($projectDirectoryUrl, '', $_SERVER['REQUEST_URI']);
+        $requestUrlPartsWithQuery = explode('?', $requestUrl);
+        $requestUrl = $requestUrlPartsWithQuery[0];
 
         if(isset($get[$requestUrl])) {
             $class = $get[$requestUrl]['class'];

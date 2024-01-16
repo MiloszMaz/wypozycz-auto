@@ -13,11 +13,13 @@ class Controller
     }
     public function view($filePath, $variables = []): void
     {
+        $variables['__path'] = sprintf('%s/views/%s/%s.php', __PROJECT_DIR__, $this->getControllerName(), $filePath);
+
         extract($variables);
 
         ob_start();
 
-        include sprintf('%s/views/%s/%s.php', __PROJECT_DIR__, $this->getControllerName(), $filePath);
+        include __PROJECT_DIR__ . '/views/layout.php';
 
         $output = ob_get_clean();
         echo $output;
