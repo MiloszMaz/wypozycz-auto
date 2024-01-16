@@ -5,6 +5,7 @@ return [
             'class' => 'HomeController',
             'func' => 'index',
         ],
+        // user
         '/login' => [
             'class' => 'LoginController',
             'func' => 'index',
@@ -13,11 +14,23 @@ return [
             'class' => 'LoginController',
             'func' => 'logout',
         ],
+
+        // admin
+        '/admin/nowe-konto' => [
+            'class' => 'AdminController',
+            'func' => 'addAccount',
+        ],
     ],
     'post' => [
         '/login-go' => [
             'class' => 'LoginController',
             'func' => 'loginGo',
-        ]
+        ],
+
+        // admin
+        '/admin/nowe-konto-dodaj' => [
+            'class' => 'AdminController',
+            'func' => 'addAccountProcess',
+        ],
     ]
 ];

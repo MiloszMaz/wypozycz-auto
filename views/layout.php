@@ -11,7 +11,7 @@ use Core\Auth;
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $__title ?? ''; ?></title>
-    <link href="./css/style.css" rel="stylesheet">
+    <link href="<?php echo Url::to('/css/style.css') ?>" rel="stylesheet">
 </head>
 <body>
 <?php if(Auth::isLogged()): ?>

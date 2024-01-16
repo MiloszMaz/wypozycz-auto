@@ -27,11 +27,16 @@ class DB
         return new \PDO($dsn, $dbConfig['db_user'], $dbConfig['db_pass'], $options);
     }
 
-    public static function queryOne(string $query, array $boundParams = [])
+    private static function prepare(string $query)
     {
         $db = self::connection();
 
-        $sql = $db->prepare($query);
+        return $db->prepare($query);
+    }
+
+    private static function getQueryBinding(string $query, array $boundParams)
+    {
+        $sql = self::prepare($query);
 
         $queryDebug = $query;
 
@@ -50,8 +55,22 @@ class DB
             echo '</pre>';
         }
 
+        return $sql;
+    }
+
+    public static function queryOne(string $query, array $boundParams = [])
+    {
+        $sql = self::getQueryBinding($query, $boundParams);
+
         $sql->execute();
 
         return $sql->fetch();
+    }
+
+    public static function execute(string $query, array $boundParams = []): int
+    {
+        $sql = self::getQueryBinding($query, $boundParams);
+
+        return $sql->execute();
     }
 }
