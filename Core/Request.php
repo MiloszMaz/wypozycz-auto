@@ -4,8 +4,12 @@ namespace Core;
 
 class Request
 {
-    public function get(string $variableName)
+    public static function get(string $variableName)
     {
-        return $_REQUEST[$variableName] ?? '';
+        if(isset($_REQUEST[$variableName])) {
+            return htmlspecialchars($_REQUEST[$variableName]);
+        }
+
+        return '';
     }
 }

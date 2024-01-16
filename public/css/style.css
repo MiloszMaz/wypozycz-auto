@@ -11,7 +11,7 @@ a {
     max-width: 1200px;
     margin: 0 auto;
 }
-
+/* menu */
 menu {
     list-style: none;
     display: flex;
@@ -35,4 +35,44 @@ menu li.menu-site-item a {
 menu li.menu-site-item:hover a {
     background: #ffb5b5;
     border: 3px solid #ffe6e6;
+}
+
+
+#site-content {
+    margin-top: 1em;
+}
+.btn {
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    background: #865555;
+    padding: 8px 2em;
+    border: 1px solid #6c3d3d;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: "Avenir Next", serif;
+    letter-spacing: 1px;
+}
+.btn:hover {
+    background: #4f2121;
+    border: 1px solid #411a1a;
+    cursor: pointer;
+}
+input[type=text], input[type=password] {
+    display: block;
+    width: 100%;
+    padding: .6rem .8rem;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5;
+    background: #fff;
+    border: 1px solid #000000;
+}
+label.form-label {
+    margin-bottom: .5rem;
+    display: inline-block;
+}
+.form-row {
+    margin-bottom: 1em;
 }

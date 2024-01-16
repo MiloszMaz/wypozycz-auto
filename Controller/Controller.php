@@ -11,9 +11,10 @@ class Controller
 
         return strtolower($controllerName);
     }
-    public function view($filePath, $variables = []): void
+    public function view(string $filePath, string $title = '', $variables = []): void
     {
         $variables['__path'] = sprintf('%s/views/%s/%s.php', __PROJECT_DIR__, $this->getControllerName(), $filePath);
+        $variables['__title'] = $title;
 
         extract($variables);
 

@@ -3,14 +3,17 @@ return [
     'get' => [
         '/' => [
             'class' => 'HomeController',
-            'func' => 'Index',
+            'func' => 'index',
         ],
         '/login' => [
             'class' => 'LoginController',
-            'func' => 'Index',
+            'func' => 'index',
         ],
     ],
     'post' => [
-
+        '/login-go' => [
+            'class' => 'LoginController',
+            'func' => 'loginGo',
+        ]
     ]
 ];

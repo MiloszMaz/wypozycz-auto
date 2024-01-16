@@ -8,15 +8,15 @@ class Route
     {
         $routes = require_once '../config/routes.php';
 
-        if(isset($routes['get'])) {
-            $this->handleRouteGet($routes['get']);
+        if(isset($_GET) && isset($routes['get'])) {
+            $this->handleRoute($routes['get']);
         }
-        if(isset($routes['post'])) {
-            $this->handleRoutePost($routes['post']);
+        if(isset($_POST) && isset($routes['post'])) {
+            $this->handleRoute($routes['post']);
         }
     }
 
-    private function handleRouteGet($get): void
+    private function getRequestUrl()
     {
         $projectDirectorySeparatorServer = str_replace('\\', '/', __PROJECT_DIR__);
         $projectDirectoryUrl = str_replace($_SERVER['CONTEXT_DOCUMENT_ROOT'], '', $projectDirectorySeparatorServer);
@@ -24,7 +24,13 @@ class Route
 
         $requestUrl = str_replace($projectDirectoryUrl, '', $_SERVER['REQUEST_URI']);
         $requestUrlPartsWithQuery = explode('?', $requestUrl);
-        $requestUrl = $requestUrlPartsWithQuery[0];
+
+        return $requestUrlPartsWithQuery[0];
+    }
+
+    private function handleRoute($get): void
+    {
+        $requestUrl = $this->getRequestUrl();
 
         if(isset($get[$requestUrl])) {
             $class = $get[$requestUrl]['class'];
@@ -35,10 +41,5 @@ class Route
             $currentController = new $classWithNamespace;
             $currentController->$func();
         }
-    }
-
-    private function handleRoutePost($post): void
-    {
-
     }
 }
