@@ -11,6 +11,16 @@ a {
     max-width: 1200px;
     margin: 0 auto;
 }
+header {
+    background: #6c3d3d;
+    padding: 1em;
+    color: #fff;
+    text-transform: uppercase;
+}
+p {
+    margin: 0;
+    padding: 0;
+}
 /* menu */
 menu {
     list-style: none;

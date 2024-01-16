@@ -1,9 +1,11 @@
 <?php
 namespace Controller;
 
+use Core\Url;
+
 class Controller
 {
-    public function getControllerName(): string
+    private function getControllerName(): string
     {
         $controller = get_called_class();
         $controllerName = str_replace('Controller\\', '', $controller);
@@ -11,7 +13,7 @@ class Controller
 
         return strtolower($controllerName);
     }
-    public function view(string $filePath, string $title = '', $variables = []): void
+    protected function view(string $filePath, string $title = '', $variables = []): void
     {
         $variables['__path'] = sprintf('%s/views/%s/%s.php', __PROJECT_DIR__, $this->getControllerName(), $filePath);
         $variables['__title'] = $title;
@@ -24,5 +26,10 @@ class Controller
 
         $output = ob_get_clean();
         echo $output;
+    }
+
+    protected function redirect($route)
+    {
+        header(sprintf('Location: %s', Url::to($route)));
     }
 }

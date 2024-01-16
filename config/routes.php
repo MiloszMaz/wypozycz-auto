@@ -9,6 +9,10 @@ return [
             'class' => 'LoginController',
             'func' => 'index',
         ],
+        '/logout' => [
+            'class' => 'LoginController',
+            'func' => 'logout',
+        ],
     ],
     'post' => [
         '/login-go' => [
