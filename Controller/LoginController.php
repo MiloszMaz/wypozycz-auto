@@ -31,7 +31,7 @@ class LoginController extends Controller
         ]);
 
         if($user && password_verify($password, $user['password'])) {
-            Auth::authorizeUser($login, $user['role']);
+            Auth::authorizeUser($user['id'], $user['login'], $user['role']);
         }
 
         $this->view('index', 'Logowanie');

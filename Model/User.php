@@ -30,8 +30,15 @@ class User extends ModelDatabase
         return DB::queryCount("SELECT COUNT(*) FROM user WHERE login = :login", [':login' => $login]);
     }
 
-    public static function findAll()
+    public static function findAll(): array
     {
         return DB::queryAll("SELECT * FROM user");
+    }
+
+    public static function delete(int $id): int
+    {
+        return DB::execute("DELETE FROM user WHERE id = :id", [
+            ':id' => $id
+        ]);
     }
 }

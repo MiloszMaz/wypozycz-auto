@@ -20,6 +20,10 @@ return [
             'class' => 'AdminController',
             'func' => 'addAccount',
         ],
+        '/admin/konto/usun' => [
+            'class' => 'AdminController',
+            'func' => 'deleteAccount',
+        ],
     ],
     'post' => [
         '/login-go' => [

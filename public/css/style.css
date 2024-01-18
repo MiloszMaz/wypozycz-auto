@@ -2,7 +2,6 @@ html, body {
     margin: 0;
     padding: 0;
     color: #000;
-    position: relative;
 }
 a {
     color: #000;
@@ -88,6 +87,13 @@ menu li.menu-site-item:hover a {
     font-weight: bold;
     font-family: "Avenir Next", serif;
     letter-spacing: 1px;
+}
+.btn-edit {
+    background: #1f7d8d;
+    border-color: #0f5765;
+}
+.btn-delete {
+    background: #a80c0c;
 }
 .btn:hover {
     background: #4f2121;

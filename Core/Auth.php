@@ -9,9 +9,10 @@ class Auth
         return password_hash($password, PASSWORD_BCRYPT);
     }
 
-    public static function authorizeUser(string $login, string $role): void
+    public static function authorizeUser(int $id, string $login, string $role): void
     {
         $_SESSION['user'] = [
+            'id' => $id,
             'login' => $login,
             'role' => $role
         ];
@@ -35,6 +36,14 @@ class Auth
     public static function isPracownik(): bool
     {
         return self::isLogged() && $_SESSION['user']['role'] == 'pracownik';
+    }
+
+    public static function getId(): string
+    {
+        if(self::isLogged()) {
+            return $_SESSION['user']['id'];
+        }
+        return '';
     }
 
     public static function getLogin(): string

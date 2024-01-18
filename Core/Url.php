@@ -11,8 +11,13 @@ class Url
 
         return $pathUrl;
     }
-    public static function to($route): string
+    public static function to(string $route, array $params = []): string
     {
+        if($params) {
+            $url = http_build_query($params);
+            $route .= '?' . $url;
+        }
+
         return sprintf('%s%s', self::getPath(), $route);
     }
 }
