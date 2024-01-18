@@ -22,6 +22,18 @@ use Core\FlashMessage;
 </p>
 </header>
 <?php endif; ?>
+<?php if(Auth::isLogged()): ?>
+<menu id="admin-menu">
+    <?php if(Auth::isAdministrator()): ?>
+        <li class="menu-site-item">
+            <a href="<?php echo Url::to('/admin/nowe-konto') ?>" title="Dodaj nowe konto" class="menu-site-item-link">
+                Dodaj nowe konto
+            </a>
+        </li>
+    <?php endif; ?>
+</menu>
+<?php endif; ?>
+
 <menu>
     <li class="menu-site-item">
         <a href="<?php echo Url::to('/') ?>" title="Strona Główna" class="menu-site-item-link">
@@ -29,17 +41,10 @@ use Core\FlashMessage;
         </a>
     </li>
     <li class="menu-site-item">
-        <a href="<?php echo Url::to('/login') ?>" title="Strona Główna" class="menu-site-item-link">
-            Strona Główna
+        <a href="<?php echo Url::to('/zamowienie') ?>" title="Złóż zamówienie" class="menu-site-item-link">
+            Złóż zamówienie
         </a>
     </li>
-    <?php if(Auth::isAdministrator()): ?>
-    <li class="menu-site-item">
-        <a href="<?php echo Url::to('/admin/nowe-konto') ?>" title="Dodaj nowe konto" class="menu-site-item-link">
-            Dodaj nowe konto
-        </a>
-    </li>
-    <?php endif; ?>
     <?php if(Auth::isLogged()): ?>
     <li class="menu-site-item">
         <a href="<?php echo Url::to('/logout') ?>" title="Wyloguj" class="menu-site-item-link">

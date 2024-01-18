@@ -51,6 +51,14 @@ menu li.menu-site-item:hover a {
     background: #ffb5b5;
     border: 3px solid #ffe6e6;
 }
+#admin-menu li.menu-site-item a {
+    background-color: #49000d;
+    border-color: #845151;
+}
+#admin-menu li.menu-site-item:hover a {
+    background-color: #851c2a;
+    border-color: #7e2121;
+}
 
 .alert {
     padding: 1em 2em;
