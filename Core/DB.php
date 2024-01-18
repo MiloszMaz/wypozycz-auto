@@ -6,7 +6,7 @@ class DB
 {
     private static function getConfig()
     {
-        return require_once '../config/database.php';
+        return require __PROJECT_DIR__ . '/config/database.php';
     }
 
     private static function connection(): \PDO
@@ -34,7 +34,7 @@ class DB
         return $db->prepare($query);
     }
 
-    private static function getQueryBinding(string $query, array $boundParams)
+    private static function getQueryBinding(string $query, array $boundParams): \PDOStatement
     {
         $sql = self::prepare($query);
 
@@ -58,6 +58,15 @@ class DB
         return $sql;
     }
 
+    public static function queryAll(string $query, array $boundParams = [])
+    {
+        $sql = self::getQueryBinding($query, $boundParams);
+
+        $sql->execute();
+
+        return $sql->fetchAll();
+    }
+
     public static function queryOne(string $query, array $boundParams = [])
     {
         $sql = self::getQueryBinding($query, $boundParams);
@@ -67,10 +76,19 @@ class DB
         return $sql->fetch();
     }
 
-    public static function execute(string $query, array $boundParams = []): int
+    public static function queryCount(string $query, array $boundParams = [])
     {
         $sql = self::getQueryBinding($query, $boundParams);
 
-        return $sql->execute();
+        $sql->execute();
+
+        return $sql->fetchColumn();
+    }
+
+    public static function execute(string $query, array $boundParams = []): int
+    {
+        $sql = self::prepare($query);
+
+        return $sql->execute($boundParams);
     }
 }

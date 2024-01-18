@@ -2,6 +2,7 @@ html, body {
     margin: 0;
     padding: 0;
     color: #000;
+    position: relative;
 }
 a {
     color: #000;
@@ -11,11 +12,16 @@ a {
     max-width: 1200px;
     margin: 0 auto;
 }
-header {
+header, footer {
     background: #6c3d3d;
     padding: 1em;
     color: #fff;
     text-transform: uppercase;
+}
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 p {
     margin: 0;
@@ -47,9 +53,28 @@ menu li.menu-site-item:hover a {
     border: 3px solid #ffe6e6;
 }
 
+.alert {
+    padding: 1em 2em;
+    background: darkgoldenrod;
+    border: #9d7202;
+    color: #fff;
+    display: block;
+    width: 100%;
+    line-height: 1.2;
+    font-family: "Times New Roman", serif;
+}
+.alert.alert-error {
+    background: #620003;
+    border: #49000d;
+}
+.alert.alert-success {
+    background: #007221;
+    border: #1e5000;
+}
 
 #site-content {
     margin-top: 1em;
+    padding-bottom: 85px;
 }
 .btn {
     text-align: center;
@@ -85,4 +110,15 @@ label.form-label {
 }
 .form-row {
     margin-bottom: 1em;
+}
+
+table {
+    border-collapse: collapse;
+}
+.table {
+    width: 100%;
+}
+table td, table th {
+    padding: 1em;
+    border: 1px solid #493e3e;
 }

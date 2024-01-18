@@ -1,4 +1,5 @@
 <?php
+/* @var array $users list of users */
 
 use Core\Url;
 ?>
@@ -27,3 +28,28 @@ use Core\Url;
         <input type="submit" class="btn btn-1" value="Dodaj nowego użytkownika" />
     </div>
 </form>
+
+<h2>Lista kont</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Login</th>
+            <th>Rola</th>
+            <th>Edytuj</th>
+            <th>Usuń</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($users as $user): ?>
+        <tr>
+            <th><?php echo $user['id'] ?></th>
+            <td><?php echo $user['login'] ?></td>
+            <td><?php echo $user['role'] ?></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>

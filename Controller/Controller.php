@@ -31,5 +31,6 @@ class Controller
     protected function redirect($route)
     {
         header(sprintf('Location: %s', Url::to($route)));
+        exit;
     }
 }

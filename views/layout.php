@@ -4,6 +4,7 @@
 
 use Core\Url;
 use Core\Auth;
+use Core\FlashMessage;
 ?>
 <!doctype html>
 <html lang="en">
@@ -55,8 +56,22 @@ use Core\Auth;
 </menu>
 
 <section id="site-content" class="container">
+    <?php if(FlashMessage::has('success')): ?>
+    <div class="alert alert-success">
+        <p><?php echo FlashMessage::get('success') ?></p>
+    </div>
+    <?php endif; ?>
+    <?php if(FlashMessage::has('error')): ?>
+        <div class="alert alert-error">
+            <p><?php echo FlashMessage::get('error') ?></p>
+        </div>
+    <?php endif; ?>
+
     <?php require_once $__path; ?>
 </section>
 
+<footer>
+    &copy; Wypożycz Auto &amp; <strong>Miłosz Mazurewicz</strong>
+</footer>
 </body>
 </html>

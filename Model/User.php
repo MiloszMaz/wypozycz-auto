@@ -2,6 +2,7 @@
 namespace Model;
 
 use Core\Auth;
+use Core\DB;
 
 class User extends ModelDatabase
 {
@@ -11,10 +12,26 @@ class User extends ModelDatabase
 
     public string $role;
 
-    public function save()
+    public function save(): int
     {
         $this->password = Auth::passwordHash($this->password);
 
-        parent::saveInDb('user', $this);
+        $sql = sprintf("INSERT INTO user (login, password, role) VALUES (:login, :password, :role);");
+
+        return DB::execute($sql, [
+            ':login' => $this->login,
+            ':password' => $this->password,
+            ':role' => $this->role
+        ]);
+    }
+
+    public static function checkIfExists(string $login): int
+    {
+        return DB::queryCount("SELECT COUNT(*) FROM user WHERE login = :login", [':login' => $login]);
+    }
+
+    public static function findAll()
+    {
+        return DB::queryAll("SELECT * FROM user");
     }
 }
