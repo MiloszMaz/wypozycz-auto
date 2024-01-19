@@ -12,7 +12,7 @@ use Core\Url;
 <table class="table">
     <thead>
     <tr>
-        <th>Miesiąc</th>
+        <th>Dzień</th>
         <th>Ilość</th>
         <th>Wartość</th>
     </tr>
@@ -56,7 +56,7 @@ use Core\Url;
 <table class="table">
     <thead>
     <tr>
-        <th>Miesiąc</th>
+        <th>Dzień</th>
         <th>Ilość</th>
         <th>Wartość</th>
     </tr>
@@ -79,3 +79,25 @@ use Core\Url;
 <hr>
 
 <h2>4. Zliczanie ilości i wartości wypożyczonych samochodów według koloru po każdym miesiącu</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Miesiąc</th>
+        <th>Ilość</th>
+        <th>Wartość</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach($allMonthKolor as $day): ?>
+        <tr>
+            <td colspan="3"><?php echo $day['date'] ?></td>
+        </tr>
+        <?php foreach($day['result'] as $item): ?>
+            <tr class="sub-tr">
+                <td><?php echo $item['kolor'] ?></td>
+                <td><?php echo $item['ilosc'] ?></td>
+                <td><?php echo $item['cena']  ?> zł</td>
+            </tr>
+        <?php endforeach; endforeach; ?>
+    </tbody>
+</table>
