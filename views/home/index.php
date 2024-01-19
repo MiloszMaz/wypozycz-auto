@@ -1,11 +1,17 @@
 <?php
 /* @var array $cars cars in database */
+/* @var array $topMonthCar top car of this month */
 
 use Core\Url;
 ?>
-<article>
-    <h2>TOP miesiąca</h2>
+<?php if($topMonthCar): ?>
+<article class="top">
+    <h2>TOP tego miesiąca</h2>
+    <div class="top-marka">
+        <?php echo $topMonthCar['marka'] ?>
+    </div>
 </article>
+<?php endif; ?>
 
 
 <h1>Lista samochodów</h1>

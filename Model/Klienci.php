@@ -17,24 +17,20 @@ class Klienci
     {
         $sql = "INSERT INTO klienci (imie, nazwisko, pesel) VALUES (:imie, :nazwisko, :pesel);";
 
-        DB::execute($sql, [
+        $result = DB::execute($sql, [
             ':imie' => $this->imie,
             ':nazwisko' => $this->nazwisko,
             ':pesel' => $this->pesel
         ]);
 
-        $idAdded = DB::queryOneColumn("SELECT LAST_INSERT_ID(); ");
+        $idAdded = DB::queryOneColumn("SELECT id FROM klienci ORDER BY id DESC LIMIT 1;");
 
         $this->id = $idAdded;
 
-        /*$klient = DB::queryOne("SELECT * FROM klienci WHERE id = :id", [
-            'id' => $idAdded
-        ]);*/
-
-        return 1;
+        return $result;
     }
 
-    public static function findByPesel(string $pesel): array
+    public static function findByPesel(string $pesel)
     {
         return DB::queryOne("SELECT * FROM klienci WHERE pesel = :pesel", [':pesel' => $pesel]);
     }

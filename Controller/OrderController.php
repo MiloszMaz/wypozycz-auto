@@ -17,7 +17,7 @@ class OrderController extends Controller
     {
         $id = Request::get('id');
 
-        if(!is_numeric($id)) {
+        if(!is_numeric((int)$id)) {
             FlashMessage::add('error', 'Nie znaleziono takiego samochodu');
 
             $this->redirect('/');
@@ -38,7 +38,7 @@ class OrderController extends Controller
         $iloscDni = Request::get('ilosc_dni');
         $pesel = Request::get('pesel');
 
-        if(!is_numeric($iloscDni)) {
+        if(!is_numeric((int)$iloscDni)) {
             FlashMessage::add('error', 'Ilość dni musi być liczbą');
 
             $this->redirect('/zamowienie', ['id' => $idCar]);
@@ -48,7 +48,7 @@ class OrderController extends Controller
 
             $this->redirect('/zamowienie', ['id' => $idCar]);
         }
-        if(!is_numeric($pesel)) {
+        if(!$this->validatePesel($pesel)) {
             FlashMessage::add('error', 'Pesel musi być liczbą');
 
             $this->redirect('/zamowienie', ['id' => $idCar]);
@@ -87,5 +87,10 @@ class OrderController extends Controller
         $pattern = '/^\d{4}-\d{2}-\d{2}$/';
 
         return preg_match($pattern, $date);
+    }
+
+    private function validatePesel(string $pesel): bool
+    {
+        return is_numeric((int)$pesel) && strlen($pesel) == 11;
     }
 }

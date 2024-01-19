@@ -112,4 +112,24 @@ class Samochod
             ':id' => $id
         ]);
     }
+
+    public static function getTopMonthCar()
+    {
+        $date = date('Y-m');
+
+        $sql = "SELECT * FROM samochod WHERE id = 
+(
+SELECT id_samochodu
+FROM wypozyczenia 
+WHERE data LIKE :date
+    AND przyjete = 1
+GROUP BY id_samochodu
+ORDER BY COUNT(*) DESC
+LIMIT 1
+    )";
+
+        return DB::queryOne($sql, [
+            ':date' => $date.'%',
+        ]);
+    }
 }

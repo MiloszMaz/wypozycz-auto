@@ -189,3 +189,9 @@ h1 {
 hr {
     margin: 1em 0;
 }
+article.top {
+    background: #ce9664;
+    border: 1px solid #aa5b22;
+    padding: 1em;
+    border-radius: 15px;
+}

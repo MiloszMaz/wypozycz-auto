@@ -30,7 +30,7 @@ class KierownikController extends Controller
         $rokProdukcji = Request::get('rok_produkcji');
         $cena = Request::get('cena_za_jeden_dzien');
 
-        if(!is_float($cena) || !is_numeric($rokProdukcji)) {
+        if(!is_float((float)$cena) || !is_numeric((int)$rokProdukcji)) {
             FlashMessage::add('error', 'Rok musi zawierać tylko liczby. <br>Cena musi mieć format np. 52.23');
 
             $this->redirect('/kierownik/lista-samochodow');
@@ -54,7 +54,7 @@ class KierownikController extends Controller
     {
         $id = Request::get('id');
 
-        if(!is_numeric($id)) {
+        if(!is_numeric((int)$id)) {
             FlashMessage::add('error', 'Nie znaleziono takiego samochodu');
 
             $this->redirect('/kierownik/lista-samochodow');
@@ -71,7 +71,7 @@ class KierownikController extends Controller
     {
         $id = Request::get('id');
 
-        if(!is_numeric($id)) {
+        if(!is_numeric((int)$id)) {
             FlashMessage::add('error', 'Nie znaleziono takiego samochodu');
 
             $this->redirect('/kierownik/lista-samochodow');

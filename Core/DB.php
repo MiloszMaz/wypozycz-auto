@@ -94,6 +94,22 @@ class DB
     {
         $sql = self::prepare($query);
 
+        // start debug
+        $queryDebug = $query;
+        foreach($boundParams as $key => $value) {
+            $queryDebug = str_replace($key, sprintf("'%s'", $value), $queryDebug);
+        }
+        if(__DEBUG__) {
+            echo '<pre>';
+            print_r([
+                $queryDebug,
+                //$sql,
+                $boundParams
+            ]);
+            echo '</pre>';
+        }
+        // end debug
+
         return $sql->execute($boundParams);
     }
 }
