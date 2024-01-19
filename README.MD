@@ -41,8 +41,14 @@ Wypozyczenia (id_klienta) - Klienci (id)
 Wypozyczenia (id_samochodu) - Samochod (id)
 4. Funkcjonalność - logowanie dla 3 grup jest w jednym miejscu. Użytkownicy są przechowywami w bazie danych, natomiast w kodzie przywileje i sesje obsługuje klasa `Core/Auth.php`
 Menu zalogowanych jest oddzielone od menu gości - menu dla zalogowanych ma kolor ciemnoczerwony.
+Link do logowania: http://codefbs.usermd.net/wypozycz-auto/public/login
 5. Przyjmowanie zamowien - opracowane w sposob:
 Gość może złożyć zamówienie, natomiast pracownik musi je ostatecznie potwierdzić, czyli przyjąć zamówienie
 Gość na stronie głównej wybiera samochód i klika wypożycz - następnie wypełnia formularz i dane zapisują się w bazie danych.
-Strony: 
-6. Usuwanie rezerwacji
+Strony: http://codefbs.usermd.net/wypozycz-auto/public/
+Pracownik: http://codefbs.usermd.net/wypozycz-auto/public/pracownik/lista-zamowien
+6. Usuwanie rezerwacji na liście zamówień: http://codefbs.usermd.net/wypozycz-auto/public/pracownik/lista-zamowien
+7. Modyfikowanie danych w bazie opracowane na liście samochodów - edycja samochodów:  http://codefbs.usermd.net/wypozycz-auto/public/kierownik/lista-samochodow
+8. Wyszukiwanie pojazdów opracowane na liście samochodów - http://codefbs.usermd.net/wypozycz-auto/public/kierownik/lista-samochodow
+9. Zliczanie znajduje się w Statystyki - http://codefbs.usermd.net/wypozycz-auto/public/statystyki
+10. Najczęściej wypożyczany samochód na stronie głównej oznaczony jako TOP miesiąca - http://codefbs.usermd.net/wypozycz-auto/public/
