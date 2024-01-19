@@ -155,4 +155,34 @@ LIMIT 1
     {
         return (float)number_format($price ?? 0, 2, '.', '');
     }
+
+    public static function findStatsOrderByDateMarka(string $date)
+    {
+        $sql = "
+        SELECT s.marka, COUNT(*) AS ilosc, SUM(ilosc_dni*s.cena_za_jeden_dzien) AS cena 
+        FROM wypozyczenia w 
+        LEFT JOIN samochod s ON s.id = w.id_samochodu 
+        WHERE data LIKE :date
+        GROUP BY s.marka;
+        ";
+
+        return DB::queryAll($sql, [
+            ':date' => $date.'%',
+        ]);
+    }
+
+    public static function findStatsOrderByDateKolor(string $date)
+    {
+        $sql = "
+        SELECT s.kolor, COUNT(*) AS ilosc, SUM(ilosc_dni*s.cena_za_jeden_dzien) AS cena 
+        FROM wypozyczenia w 
+        LEFT JOIN samochod s ON s.id = w.id_samochodu 
+        WHERE data LIKE :date
+        GROUP BY s.kolor;
+        ";
+
+        return DB::queryAll($sql, [
+            ':date' => $date.'%',
+        ]);
+    }
 }

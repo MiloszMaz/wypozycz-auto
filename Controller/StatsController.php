@@ -9,15 +9,15 @@ class StatsController extends Controller
     public function index()
     {
         $allDays = $this->getAllDays();
-        echo '<pre>';
-        print_r($allDays);
-        echo '</pre>';
-
         $allMonth = $this->getAllMonth();
+        $allDaysMarka = $this->getAllDaysByMarka();
+        $allMonthKolor = $this->getAllMonthByKolor();
 
-        $this->view('index', 'Strona Główna', [
+        $this->view('index', 'Statystyki', [
             'allDays' => $allDays,
             'allMonth' => $allMonth,
+            'allDaysMarka' => $allDaysMarka,
+            'allMonthKolor' => $allMonthKolor
         ]);
     }
 
@@ -33,18 +33,23 @@ class StatsController extends Controller
             $stats[] = [
                 'date' => $date,
                 'ilosc' => Samochod::findStatsOrderByMonthIlosc($date),
-                'price' => $price['cena'] ?? 0.0,
+                'price' => Samochod::getPrice($price['cena'] ?? 0.0),
             ];
         }
 
         return $stats;
     }
 
-    private function getAllDays(): array
+    private function getLastDayOfMonth()
     {
         $date = new \DateTimeImmutable();
         $date = $date->modify('last day of this month');
-        $lastDay = $date->format('d');
+        return $date->format('d');
+    }
+
+    private function getAllDays(): array
+    {
+        $lastDay = $this->getLastDayOfMonth();
 
         $stats = [];
         for($i=1; $i <= $lastDay; $i++) {
@@ -56,7 +61,53 @@ class StatsController extends Controller
             $stats[] = [
                 'date' => $date,
                 'ilosc' => Samochod::findStatsOrderByMonthIlosc($date),
-                'price' => $price['cena'] ?? 0.0,
+                'price' => Samochod::getPrice($price['cena'] ?? 0.0),
+            ];
+        }
+
+        return $stats;
+    }
+
+    private function getAllDaysByMarka(): array
+    {
+        $lastDay = $this->getLastDayOfMonth();
+
+        $stats = [];
+        for($i=1; $i <= $lastDay; $i++) {
+            $iAdd = ($i < 10) ? '0'.$i : $i;
+            $date = date('Y-m') . "-" . $iAdd;
+
+            $result = Samochod::findStatsOrderByDateMarka($date);
+
+            foreach ($result as &$item) {
+                $item['cena'] = Samochod::getPrice($item['cena'] ?? 0.0);
+            }
+
+            $stats[] = [
+                'date' => $date,
+                'result' => $result,
+            ];
+        }
+
+        return $stats;
+    }
+
+    private function getAllMonthByKolor(): array
+    {
+        $stats = [];
+        for($i=1; $i <= 12; $i++) {
+            $iAdd = ($i < 10) ? '0'.$i : $i;
+            $date = date('Y') . "-" . $iAdd;
+
+            $result = Samochod::findStatsOrderByDateKolor($date);
+
+            foreach ($result as &$item) {
+                $item['cena'] = Samochod::getPrice($item['cena'] ?? 0.0);
+            }
+
+            $stats[] = [
+                'date' => $date,
+                'result' => $result,
             ];
         }
 
