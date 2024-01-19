@@ -195,3 +195,6 @@ article.top {
     padding: 1em;
     border-radius: 15px;
 }
+article {
+    margin-bottom: 1em;
+}

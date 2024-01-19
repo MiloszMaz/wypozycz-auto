@@ -2,6 +2,6 @@
 
 require_once '../App.php';
 
-const __DEBUG__ = true;
+const __DEBUG__ = false;
 
 $app = new App();

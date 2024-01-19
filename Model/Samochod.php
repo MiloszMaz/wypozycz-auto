@@ -132,4 +132,27 @@ LIMIT 1
             ':date' => $date.'%',
         ]);
     }
+
+    public static function findStatsOrderByMonthIlosc(string $date)
+    {
+        $sql = "SELECT COUNT(*) FROM `wypozyczenia` WHERE data LIKE :date;";
+
+        return DB::queryCount($sql, [
+            ':date' => $date.'%',
+        ]);
+    }
+
+    public static function findStatsOrderByMonthTotalPrice(string $date)
+    {
+        $sql = "SELECT ilosc_dni*s.cena_za_jeden_dzien AS cena FROM wypozyczenia w LEFT JOIN samochod s ON s.id = w.id_samochodu WHERE data LIKE :date;";
+
+        return DB::queryOne($sql, [
+            ':date' => $date.'%',
+        ]);
+    }
+
+    public static function getPrice($price): float
+    {
+        return (float)number_format($price ?? 0, 2, '.', '');
+    }
 }
