@@ -3,6 +3,7 @@
 namespace Model;
 
 use Core\DB;
+use Core\Request;
 
 class Samochod
 {
@@ -39,6 +40,41 @@ class Samochod
     public static function findAll(): array
     {
         return DB::queryAll("SELECT * FROM samochod");
+    }
+
+    public static function findAllByFilter(): array
+    {
+        $marka = Request::get('marka');
+        $kolor = Request::get('kolor');
+        $numer_rejestracyjny = Request::get('numer_rejestracyjny');
+        $rok_produkcji = Request::get('rok_produkcji');
+
+        $sql = "SELECT * FROM samochod ";
+        $buildSql = "";
+        $params = [];
+
+        if($marka) {
+            $buildSql .= "marka LIKE :marka";
+            $params[':marka'] = '%'.$marka.'%';
+        }
+        if($kolor) {
+            $buildSql .= "kolor LIKE :kolor";
+            $params[':kolor'] = '%'.$kolor.'%';
+        }
+        if($numer_rejestracyjny) {
+            $buildSql .= "numer_rejestracyjny LIKE :numer_rejestracyjny";
+            $params[':numer_rejestracyjny'] = '%'.$numer_rejestracyjny.'%';
+        }
+        if($rok_produkcji) {
+            $buildSql .= "rok_produkcji LIKE :rok_produkcji";
+            $params[':rok_produkcji'] = '%'.$rok_produkcji.'%';
+        }
+
+        if($buildSql) {
+            $sql .= " WHERE " . $buildSql;
+        }
+
+        return DB::queryAll($sql, $params);
     }
 
     public static function findAllActive(): array

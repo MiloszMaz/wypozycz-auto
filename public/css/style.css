@@ -1,3 +1,7 @@
+html {
+    position: relative;
+    min-height: 100vh;
+}
 html, body {
     margin: 0;
     padding: 0;
@@ -114,6 +118,10 @@ menu li.menu-site-item:hover a {
     background: #396270;
     border-color: #0d3f46;
 }
+.btn-search {
+    background: #007221;
+    border-color: #1e5000;
+}
 .btn:hover {
     background: #4f2121;
     border: 1px solid #411a1a;
@@ -176,5 +184,8 @@ h1 {
     color: green;
 }
 .text-help {
+    margin: 1em 0;
+}
+hr {
     margin: 1em 0;
 }

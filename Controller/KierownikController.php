@@ -18,7 +18,7 @@ class KierownikController extends Controller
 
     public function carList()
     {
-        $cars = Samochod::findAll();
+        $cars = Samochod::findAllByFilter();
 
         $this->view('carList', 'Lista samochodów', [
             'cars' => $cars

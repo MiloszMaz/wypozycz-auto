@@ -5,30 +5,62 @@ use Core\Url;
 ?>
 <h1>Panel Kierownika</h1>
 
-<h2>Nowy samochód</h2>
+<h2></h2>
 <form action="<?php echo Url::to('/kierownik/nowy-samochod') ?>" method="post" class="">
+    <fieldset>
+        <legend>Nowy samochód</legend>
+        <div class="form-row">
+            <label class="form-label" for="marka">Marka: </label>
+            <input type="text" name="marka" id="marka" placeholder="Fiat" required />
+        </div>
+        <div class="form-row">
+            <label class="form-label" for="kolor">Kolor: </label>
+            <input type="text" name="kolor" id="kolor" placeholder="Czerwony" required />
+        </div>
+        <div class="form-row">
+            <label class="form-label" for="numer_rejestracyjny">Numer rejestracyjny: </label>
+            <input type="text" name="numer_rejestracyjny" id="numer_rejestracyjny" placeholder="QWE123" required />
+        </div>
+        <div class="form-row">
+            <label class="form-label" for="rok_produkcji">Rok produkcji: </label>
+            <input type="text" name="rok_produkcji" id="rok_produkcji" placeholder="2003" required />
+        </div>
+        <div class="form-row">
+            <label class="form-label" for="cena_za_jeden_dzien">Cena za jeden dzień: </label>
+            <input type="text" name="cena_za_jeden_dzien" id="cena_za_jeden_dzien" placeholder="100.42" required />
+        </div>
+        <div class="row">
+            <input type="submit" class="btn btn-1" value="Dodaj nowy samochód" />
+        </div>
+    </fieldset>
+</form>
+
+<hr>
+
+<h2>Wyszukaj samochód</h2>
+<p class="text-help">
+    Pozostaw pole puste, a nie będzie brane pod uwagę
+</p>
+
+<form action="<?php echo Url::to('/kierownik/lista-samochodow') ?>" method="get" class="">
     <div class="form-row">
         <label class="form-label" for="marka">Marka: </label>
-        <input type="text" name="marka" id="marka" placeholder="Fiat" required />
+        <input type="text" name="marka" id="marka" placeholder="Fiat" />
     </div>
     <div class="form-row">
         <label class="form-label" for="kolor">Kolor: </label>
-        <input type="text" name="kolor" id="kolor" placeholder="Czerwony" required />
+        <input type="text" name="kolor" id="kolor" placeholder="Czerwony" />
     </div>
     <div class="form-row">
         <label class="form-label" for="numer_rejestracyjny">Numer rejestracyjny: </label>
-        <input type="text" name="numer_rejestracyjny" id="numer_rejestracyjny" placeholder="QWE123" required />
+        <input type="text" name="numer_rejestracyjny" id="numer_rejestracyjny" placeholder="QWE123" />
     </div>
     <div class="form-row">
         <label class="form-label" for="rok_produkcji">Rok produkcji: </label>
-        <input type="text" name="rok_produkcji" id="rok_produkcji" placeholder="2003" required />
-    </div>
-    <div class="form-row">
-        <label class="form-label" for="cena_za_jeden_dzien">Cena za jeden dzień: </label>
-        <input type="text" name="cena_za_jeden_dzien" id="cena_za_jeden_dzien" placeholder="100.42" required />
+        <input type="text" name="rok_produkcji" id="rok_produkcji" placeholder="2003" />
     </div>
     <div class="row">
-        <input type="submit" class="btn btn-1" value="Dodaj nowy samochód" />
+        <input type="submit" class="btn btn-search" value="Szukaj" />
     </div>
 </form>
 
