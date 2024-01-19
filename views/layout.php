@@ -56,11 +56,6 @@ use Core\FlashMessage;
             Strona Główna
         </a>
     </li>
-    <li class="menu-site-item">
-        <a href="<?php echo Url::to('/zamowienie') ?>" title="Złóż zamówienie" class="menu-site-item-link">
-            Złóż zamówienie
-        </a>
-    </li>
     <?php if(Auth::isLogged()): ?>
     <li class="menu-site-item">
         <a href="<?php echo Url::to('/logout') ?>" title="Wyloguj" class="menu-site-item-link">

@@ -27,7 +27,7 @@ use Core\Url;
             <td><?php echo $car['numer_rejestracyjny']; ?></td>
             <td><?php echo $car['rok_produkcji']; ?></td>
             <td><?php echo $car['cena_za_jeden_dzien']; ?></td>
-            <td></td>
+            <td><a href="<?php echo Url::to('/zamowienie', ['id' => $car['id']]) ?>" class="btn btn-order" title="Wypożycz">Wypożycz</a></td>
         </tr>
         <?php $i++; endforeach; ?>
         <?php else: ?>

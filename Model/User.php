@@ -4,7 +4,7 @@ namespace Model;
 use Core\Auth;
 use Core\DB;
 
-class User extends ModelDatabase
+class User
 {
     public string $login;
 

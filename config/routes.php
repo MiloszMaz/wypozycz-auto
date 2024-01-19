@@ -55,7 +55,7 @@ return [
     ],
     'post' => [
         // zamowienie
-        'zloz-zamowienie' => [
+        '/zloz-zamowienie' => [
             'class' => 'OrderController',
             'func' => 'createProcess',
         ],

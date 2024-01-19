@@ -31,7 +31,7 @@ class KierownikController extends Controller
         $cena = Request::get('cena_za_jeden_dzien');
 
         if(!is_float($cena) || !is_numeric($rokProdukcji)) {
-            FlashMessage::add('error', 'Rok musi zaweirać tylko liczby. <br>Cena musi mieć format np. 52.23');
+            FlashMessage::add('error', 'Rok musi zawierać tylko liczby. <br>Cena musi mieć format np. 52.23');
 
             $this->redirect('/kierownik/lista-samochodow');
         }

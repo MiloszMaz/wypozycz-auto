@@ -28,9 +28,9 @@ class Controller
         echo $output;
     }
 
-    protected function redirect($route)
+    protected function redirect(string $route, array $params = [])
     {
-        header(sprintf('Location: %s', Url::to($route)));
+        header(sprintf('Location: %s', Url::to($route, $params)));
         exit;
     }
 }

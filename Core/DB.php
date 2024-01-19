@@ -78,6 +78,11 @@ class DB
 
     public static function queryCount(string $query, array $boundParams = [])
     {
+        return self::queryOneColumn($query, $boundParams);
+    }
+
+    public static function queryOneColumn(string $query, array $boundParams = [])
+    {
         $sql = self::getQueryBinding($query, $boundParams);
 
         $sql->execute();
