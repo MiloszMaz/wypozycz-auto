@@ -144,7 +144,7 @@ LIMIT 1
 
     public static function findStatsOrderByMonthTotalPrice(string $date)
     {
-        $sql = "SELECT ilosc_dni*s.cena_za_jeden_dzien AS cena FROM wypozyczenia w LEFT JOIN samochod s ON s.id = w.id_samochodu WHERE data LIKE :date;";
+        $sql = "SELECT SUM(ilosc_dni*s.cena_za_jeden_dzien) AS cena FROM wypozyczenia w LEFT JOIN samochod s ON s.id = w.id_samochodu WHERE data LIKE :date;";
 
         return DB::queryOne($sql, [
             ':date' => $date.'%',
