@@ -18,8 +18,9 @@ class Route
 
     private function getRequestUrl()
     {
+        $serverRoot = $_SERVER['CONTEXT_DOCUMENT_ROOT'] ?? $_SERVER['DOCUMENT_URI'];
         $projectDirectorySeparatorServer = str_replace('\\', '/', __PROJECT_DIR__);
-        $projectDirectoryUrl = str_replace($_SERVER['CONTEXT_DOCUMENT_ROOT'], '', $projectDirectorySeparatorServer);
+        $projectDirectoryUrl = str_replace($serverRoot, '', $projectDirectorySeparatorServer);
         $projectDirectoryUrl .= '/public';
 
         $requestUrl = str_replace($projectDirectoryUrl, '', $_SERVER['REQUEST_URI']);
