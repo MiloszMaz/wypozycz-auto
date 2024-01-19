@@ -27,6 +27,14 @@ return [
             'class' => 'PracownikController',
             'func' => 'orderList',
         ],
+        '/pracownik/zamowienie/przyjmij' => [
+            'class' => 'PracownikController',
+            'func' => 'accept',
+        ],
+        '/pracownik/zamowienie/usun' => [
+            'class' => 'PracownikController',
+            'func' => 'delete',
+        ],
 
         // kierownik
         '/kierownik/lista-samochodow' => [
@@ -37,9 +45,9 @@ return [
             'class' => 'KierownikController',
             'func' => 'edit',
         ],
-        '/kierownik/samochod/usun' => [
+        '/kierownik/samochod/ukryj' => [
             'class' => 'KierownikController',
-            'func' => 'delete',
+            'func' => 'toggle',
         ],
 
 

@@ -100,13 +100,19 @@ class KierownikController extends Controller
         $this->redirect('/kierownik/lista-samochodow');
     }
 
-    public function delete()
+    public function toggle()
     {
         $idDelete = Request::get('id');
+        $makeShow = Request::get('makeShow');
 
-        FlashMessage::add('success', sprintf('Samochód #%s został usunięty', $idDelete));
+        if($makeShow) {
+            FlashMessage::add('success', sprintf('Samochód #%s został odkryty.', $idDelete));
+        } else {
+            FlashMessage::add('success', sprintf('Samochód #%s został ukryty.', $idDelete));
+        }
 
-        Samochod::delete($idDelete);
+
+        Samochod::toggle($idDelete);
 
         $this->redirect('/kierownik/lista-samochodow');
     }

@@ -110,6 +110,10 @@ menu li.menu-site-item:hover a {
 .btn-order:hover {
     background: #7c5c04;
 }
+.btn-accept {
+    background: #396270;
+    border-color: #0d3f46;
+}
 .btn:hover {
     background: #4f2121;
     border: 1px solid #411a1a;
@@ -159,9 +163,18 @@ table td, table th {
 .table td, .table th {
     text-align: center;
 }
-.table td:hover, .table th:hover {
+.table tr:hover td, .table tr:hover th {
     background: #c2bdbd;
+}
+table tr.tr-car-hidden td {
+    background: #6b6363;
 }
 h1 {
     font-size: 2em;
+}
+.text-success {
+    color: green;
+}
+.text-help {
+    margin: 1em 0;
 }

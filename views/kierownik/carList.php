@@ -38,30 +38,36 @@ use Core\Url;
 <table class="table">
     <thead>
     <tr>
-        <th>#</th>
+        <th>ID</th>
         <th>Marka</th>
         <th>Kolor</th>
         <th>Numer rejestracyjny</th>
         <th>Rok produkcji</th>
         <th>Cena za jeden dzień</th>
         <th>Edytuj</th>
-        <th>Usuń</th>
+        <th>Ukryj/Odkryj</th>
     </tr>
     </thead>
     <tbody>
     <?php if($cars): ?>
-        <?php $i = 0; foreach($cars as $car): ?>
-            <tr>
-                <td><?php echo $i; ?></td>
+        <?php foreach($cars as $car): ?>
+            <tr <?php if($car['hide']): ?>class="tr-car-hidden"<?php endif; ?>>
+                <td><?php echo $car['id']; ?></td>
                 <td><?php echo $car['marka']; ?></td>
                 <td><?php echo $car['kolor']; ?></td>
                 <td><?php echo $car['numer_rejestracyjny']; ?></td>
                 <td><?php echo $car['rok_produkcji']; ?></td>
                 <td><?php echo $car['cena_za_jeden_dzien']; ?></td>
                 <td><a href="<?php echo Url::to('/kierownik/samochod/edycja', ['id' => $car['id']]) ?>" class="btn btn-edit" title="Edytuj">Edytuj</a></td>
-                <td><a href="<?php echo Url::to('/kierownik/samochod/usun', ['id' => $car['id']]) ?>" class="btn btn-delete" title="Usuń">Usuń</a></td>
+                <td>
+                    <?php if($car['hide']): ?>
+                        <a href="<?php echo Url::to('/kierownik/samochod/ukryj', ['id' => $car['id'], 'makeShow' => 1]) ?>" class="btn btn-delete" title="Odkryj">Odkryj</a>
+                    <?php else: ?>
+                        <a href="<?php echo Url::to('/kierownik/samochod/ukryj', ['id' => $car['id']]) ?>" class="btn btn-delete" title="Ukryj">Ukryj</a>
+                    <?php endif; ?>
+                </td>
             </tr>
-            <?php $i++; endforeach; ?>
+            <?php endforeach; ?>
     <?php else: ?>
         <tr>
             <td colspan="8">Nie znaleziono samochodów w bazie danych</td>
@@ -69,3 +75,7 @@ use Core\Url;
     <?php endif; ?>
     </tbody>
 </table>
+
+<p class="text-help">
+    Usuwanie samochodów jest niemożliwe aby nie utrudnić pracy wypożyczeń - można jedynie ukryć aby nie można było wypożyczyć danego samochodu.
+</p>

@@ -34,4 +34,20 @@ class Wypozyczenia
             ':uwagi' => $this->uwagi
         ]);
     }
+
+    public static function setAccept(int $id): int
+    {
+        $sql = "UPDATE wypozyczenia SET przyjete = 1 WHERE id = :id";
+
+        return DB::execute($sql, [
+            ':id' => $id
+        ]);
+    }
+
+    public static function delete(int $id): int
+    {
+        return DB::execute("DELETE FROM wypozyczenia WHERE id = :id", [
+            ':id' => $id
+        ]);
+    }
 }

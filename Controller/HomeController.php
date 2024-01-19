@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     public function Index()
     {
-        $cars = Samochod::findAll();
+        $cars = Samochod::findAllActive();
 
         $this->view('index', 'Strona Główna', [
             'cars' => $cars

@@ -41,6 +41,11 @@ class Samochod
         return DB::queryAll("SELECT * FROM samochod");
     }
 
+    public static function findAllActive(): array
+    {
+        return DB::queryAll("SELECT * FROM samochod WHERE hide = 0");
+    }
+
     public static function update(array $carDb, array $updatedCar): int
     {
         $sql = "UPDATE `samochod` SET 
@@ -61,9 +66,13 @@ class Samochod
         ]);
     }
 
-    public static function delete(int $id): int
+    public static function toggle(int $id): int
     {
-        return DB::execute("DELETE FROM samochod WHERE id = :id", [
+        $car = self::findOne($id);
+        $newValue = !$car['hide'];
+
+        return DB::execute("UPDATE samochod SET hide = :hide WHERE id = :id", [
+            ':hide' => $newValue,
             ':id' => $id
         ]);
     }
