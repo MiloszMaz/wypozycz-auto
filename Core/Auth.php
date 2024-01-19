@@ -30,11 +30,19 @@ class Auth
 
     public static function isKierownik(): bool
     {
+        if(self::isAdministrator()) {
+            return true;
+        }
+
         return self::isLogged() && $_SESSION['user']['role'] == 'kierownik';
     }
 
     public static function isPracownik(): bool
     {
+        if(self::isAdministrator()) {
+            return true;
+        }
+
         return self::isLogged() && $_SESSION['user']['role'] == 'pracownik';
     }
 

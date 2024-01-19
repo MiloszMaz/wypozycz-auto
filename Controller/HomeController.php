@@ -2,13 +2,16 @@
 namespace Controller;
 
 use Controller\Controller;
+use Model\Samochod;
 
 class HomeController extends Controller
 {
     public function Index()
     {
-        $this->view('index', 'Strona Główna', [
+        $cars = Samochod::findAll();
 
+        $this->view('index', 'Strona Główna', [
+            'cars' => $cars
         ]);
     }
 }

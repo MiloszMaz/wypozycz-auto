@@ -13,3 +13,6 @@ Aplikacja zbudowana na modelu MVC - Model - Widok - Kontroller
 2. Kierownik `jan` `test123`
 3. Administrator `milosz` `test123`
 Źródło autoryzacji znajduje się w pliku `Core/Auth.php`
+
+
+## Założenia zrealizowane w projekcie z pdf

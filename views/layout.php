@@ -18,12 +18,28 @@ use Core\FlashMessage;
 <?php if(Auth::isLogged()): ?>
 <header>
 <p>
-    Zalogowany w systemie jako <strong><?php echo Auth::getLogin() ?></strong>, przypisana rola: <strong><?php echo Auth::getRole() ?></strong>
+    <small>Zalogowany w systemie jako</small> <strong><?php echo Auth::getLogin() ?></strong>, <small>przypisana rola:</small> <strong><?php echo Auth::getRole() ?></strong>
 </p>
 </header>
 <?php endif; ?>
 <?php if(Auth::isLogged()): ?>
 <menu id="admin-menu">
+    <?php if(Auth::isPracownik()): ?>
+        <li class="menu-site-item">
+            <a href="<?php echo Url::to('/pracownik/lista-zamowien') ?>" title="Lista zamówień" class="menu-site-item-link">
+                Lista zamówień
+            </a>
+        </li>
+    <?php endif; ?>
+
+    <?php if(Auth::isKierownik()): ?>
+        <li class="menu-site-item">
+            <a href="<?php echo Url::to('/kierownik/lista-samochodow') ?>" title="Lista samochodów" class="menu-site-item-link">
+                Lista samochodów
+            </a>
+        </li>
+    <?php endif; ?>
+
     <?php if(Auth::isAdministrator()): ?>
         <li class="menu-site-item">
             <a href="<?php echo Url::to('/admin/nowe-konto') ?>" title="Dodaj nowe konto" class="menu-site-item-link">
