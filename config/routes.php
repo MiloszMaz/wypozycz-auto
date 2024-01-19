@@ -36,6 +36,11 @@ return [
             'func' => 'delete',
         ],
 
+        '/statystyki' => [
+            'class' => 'StatsController',
+            'func' => 'index',
+        ],
+
         // kierownik
         '/kierownik/lista-samochodow' => [
             'class' => 'KierownikController',

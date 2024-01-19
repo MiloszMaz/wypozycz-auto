@@ -10,6 +10,9 @@ use Core\FlashMessage;
 <html lang="pl">
 <head>
     <meta charset="utf-8">
+    <meta name="description" content="Wypozycz Auto">
+    <meta name="keywords" content="wypozycz, auto, fiat, bmw, audi">
+    <meta name="author" content="Miłosz Mazurewicz">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $__title ?? ''; ?></title>
     <link href="<?php echo Url::to('/css/style.css') ?>" rel="stylesheet">
@@ -24,6 +27,14 @@ use Core\FlashMessage;
 <?php endif; ?>
 <?php if(Auth::isLogged()): ?>
 <menu id="admin-menu">
+    <?php if(Auth::isPracownik() || Auth::isKierownik()): ?>
+        <li class="menu-site-item">
+            <a href="<?php echo Url::to('/statystyki') ?>" title="Statystyki" class="menu-site-item-link">
+                Statystyki
+            </a>
+        </li>
+    <?php endif; ?>
+
     <?php if(Auth::isPracownik()): ?>
         <li class="menu-site-item">
             <a href="<?php echo Url::to('/pracownik/lista-zamowien') ?>" title="Lista zamówień" class="menu-site-item-link">

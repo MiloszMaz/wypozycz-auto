@@ -26,7 +26,7 @@ use Core\Url;
                 <td><?php echo $order['ilosc_dni']; ?></td>
                 <td><?php echo $order['uwagi']; ?></td>
                 <td><?php echo ($order['przyjete'] ? '<span class="text-success">Tak</span>' : 'Nie'); ?></td>
-                <td><a href="<?php echo Url::to('/pracownik/zamowienie/przyjmij', ['id' => $order['id']]) ?>" class="btn btn-accept" title="Przyjmij">Przyjmij</a></td>
+                <td><?php if(!$order['przyjete']): ?><a href="<?php echo Url::to('/pracownik/zamowienie/przyjmij', ['id' => $order['id']]); ?>" class="btn btn-accept" title="Przyjmij">Przyjmij</a><?php endif; ?></td>
                 <td><a href="<?php echo Url::to('/pracownik/zamowienie/usun', ['id' => $order['id']]) ?>" class="btn btn-delete" title="Usuń">Usuń</a></td>
             </tr>
             <?php endforeach; ?>

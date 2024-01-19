@@ -3,6 +3,11 @@
 
 use Core\Url;
 ?>
+<article>
+    <h2>TOP miesiąca</h2>
+</article>
+
+
 <h1>Lista samochodów</h1>
 
 <table class="table">
