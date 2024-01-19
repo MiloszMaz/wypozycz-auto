@@ -38,7 +38,7 @@ class OrderController extends Controller
         $iloscDni = Request::get('ilosc_dni');
         $pesel = Request::get('pesel');
 
-        if(!is_numeric((int)$iloscDni)) {
+        if(!is_numeric($iloscDni) && !is_integer($iloscDni)) {
             FlashMessage::add('error', 'Ilość dni musi być liczbą');
 
             $this->redirect('/zamowienie', ['id' => $idCar]);
@@ -73,7 +73,7 @@ class OrderController extends Controller
         $wypozyczenie->id_klienta = $idKlienta;
         $wypozyczenie->id_samochodu = $idCar;
         $wypozyczenie->data = $data;
-        $wypozyczenie->ilosc_dni = $iloscDni;
+        $wypozyczenie->ilosc_dni = (int)$iloscDni;
         $wypozyczenie->uwagi = Request::get('uwagi');
         $wypozyczenie->save();
 

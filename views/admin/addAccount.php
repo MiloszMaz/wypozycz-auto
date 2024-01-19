@@ -48,7 +48,6 @@ use Core\Url;
                 <th><?php echo $user['id'] ?></th>
                 <td><?php echo $user['login'] ?></td>
                 <td><?php echo $user['role'] ?></td>
-                <td><a href="<?php echo Url::to('/admin/konto/edycja', ['id' => $user['id']]) ?>" class="btn btn-edit" title="Edytuj">Edytuj</a></td>
                 <td><a href="<?php echo Url::to('/admin/konto/usun', ['id' => $user['id']]) ?>" class="btn btn-delete" title="Usuń">Usuń</a></td>
             </tr>
             <?php endforeach; ?>

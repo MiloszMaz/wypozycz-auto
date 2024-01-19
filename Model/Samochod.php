@@ -53,21 +53,36 @@ class Samochod
         $buildSql = "";
         $params = [];
 
+        $isWhere = false;
+
         if($marka) {
-            $buildSql .= "marka LIKE :marka";
+            $buildSql .= " marka LIKE :marka ";
             $params[':marka'] = '%'.$marka.'%';
+            $isWhere = true;
         }
         if($kolor) {
-            $buildSql .= "kolor LIKE :kolor";
+            if($isWhere) {
+                $buildSql .= " AND ";
+            }
+            $buildSql .= " kolor LIKE :kolor ";
             $params[':kolor'] = '%'.$kolor.'%';
+            $isWhere = true;
         }
         if($numer_rejestracyjny) {
-            $buildSql .= "numer_rejestracyjny LIKE :numer_rejestracyjny";
+            if($isWhere) {
+                $buildSql .= " AND ";
+            }
+            $buildSql .= " numer_rejestracyjny LIKE :numer_rejestracyjny ";
             $params[':numer_rejestracyjny'] = '%'.$numer_rejestracyjny.'%';
+            $isWhere = true;
         }
         if($rok_produkcji) {
-            $buildSql .= "rok_produkcji LIKE :rok_produkcji";
+            if($isWhere) {
+                $buildSql .= " AND ";
+            }
+            $buildSql .= " rok_produkcji LIKE :rok_produkcji ";
             $params[':rok_produkcji'] = '%'.$rok_produkcji.'%';
+            $isWhere = true;
         }
 
         if($buildSql) {

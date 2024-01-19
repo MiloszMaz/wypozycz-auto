@@ -89,7 +89,7 @@ class KierownikController extends Controller
             'marka' => Request::get('marka'),
             'kolor' => Request::get('kolor'),
             'numer_rejestracyjny' => Request::get('numer_rejestracyjny'),
-            'rok_produckji' => Request::get('rok_produkcji'),
+            'rok_produkcji' => Request::get('rok_produkcji'),
             'cena_za_jeden_dzien' => Request::get('cena_za_jeden_dzien'),
         ];
 

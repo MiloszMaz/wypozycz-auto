@@ -4,6 +4,9 @@ Projekt nr 2. Aplikacja Webowa – Wypożyczalnia pojazdów samochodów osobowyc
 
 Aplikacja zbudowana na modelu MVC - Model - Widok - Kontroller
 
+Adres aplikacji do testów:
+http://codefbs.usermd.net/wypozycz-auto/public/
+
 ### Katalogi
 1. config - dane konfiguracyjne w formie tablic
 2. Controller - kontroler obsługuje kwestie serwerowe i przetwarzanie danych
