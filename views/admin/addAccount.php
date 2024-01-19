@@ -31,25 +31,27 @@ use Core\Url;
 
 <h2>Lista kont</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Login</th>
-            <th>Rola</th>
-            <th>Edytuj</th>
-            <th>Usuń</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach($users as $user): ?>
-        <tr>
-            <th><?php echo $user['id'] ?></th>
-            <td><?php echo $user['login'] ?></td>
-            <td><?php echo $user['role'] ?></td>
-            <td><a href="<?php echo Url::to('/admin/konto/edycja', ['id' => $user['id']]) ?>" class="btn btn-edit" title="Edytuj">Edytuj</a></td>
-            <td><a href="<?php echo Url::to('/admin/konto/usun', ['id' => $user['id']]) ?>" class="btn btn-delete" title="Usuń">Usuń</a></td>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Login</th>
+                <th>Rola</th>
+                <th>Edytuj</th>
+                <th>Usuń</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($users as $user): ?>
+            <tr>
+                <th><?php echo $user['id'] ?></th>
+                <td><?php echo $user['login'] ?></td>
+                <td><?php echo $user['role'] ?></td>
+                <td><a href="<?php echo Url::to('/admin/konto/edycja', ['id' => $user['id']]) ?>" class="btn btn-edit" title="Edytuj">Edytuj</a></td>
+                <td><a href="<?php echo Url::to('/admin/konto/usun', ['id' => $user['id']]) ?>" class="btn btn-delete" title="Usuń">Usuń</a></td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

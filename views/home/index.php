@@ -16,8 +16,9 @@ use Core\Url;
 
 <h1>Lista samochodów</h1>
 
-<table class="table">
-    <thead>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
         <tr>
             <th>#</th>
             <th>Marka</th>
@@ -27,24 +28,25 @@ use Core\Url;
             <th>Cena za jeden dzień</th>
             <th>Wypożycz</th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         <?php if($cars): ?>
-        <?php $i = 0; foreach($cars as $car): ?>
-        <tr>
-            <td><?php echo $i; ?></td>
-            <td><?php echo $car['marka']; ?></td>
-            <td><?php echo $car['kolor']; ?></td>
-            <td><?php echo $car['numer_rejestracyjny']; ?></td>
-            <td><?php echo $car['rok_produkcji']; ?></td>
-            <td><?php echo $car['cena_za_jeden_dzien']; ?></td>
-            <td><a href="<?php echo Url::to('/zamowienie', ['id' => $car['id']]) ?>" class="btn btn-order" title="Wypożycz">Wypożycz</a></td>
-        </tr>
-        <?php $i++; endforeach; ?>
+            <?php $i = 0; foreach($cars as $car): ?>
+                <tr>
+                    <td><?php echo $i; ?></td>
+                    <td><?php echo $car['marka']; ?></td>
+                    <td><?php echo $car['kolor']; ?></td>
+                    <td><?php echo $car['numer_rejestracyjny']; ?></td>
+                    <td><?php echo $car['rok_produkcji']; ?></td>
+                    <td><?php echo $car['cena_za_jeden_dzien']; ?></td>
+                    <td><a href="<?php echo Url::to('/zamowienie', ['id' => $car['id']]) ?>" class="btn btn-order" title="Wypożycz">Wypożycz</a></td>
+                </tr>
+                <?php $i++; endforeach; ?>
         <?php else: ?>
-        <tr>
-            <td colspan="7">Nie znaleziono samochodów w bazie danych</td>
-        </tr>
+            <tr>
+                <td colspan="7">Nie znaleziono samochodów w bazie danych</td>
+            </tr>
         <?php endif; ?>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>

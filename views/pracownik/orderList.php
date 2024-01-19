@@ -5,6 +5,7 @@ use Core\Url;
 ?>
 <h1>Lista zamówień</h1>
 
+<div class="table-responsive">
 <table class="table">
     <thead>
     <tr>
@@ -37,3 +38,4 @@ use Core\Url;
     <?php endif; ?>
     </tbody>
 </table>
+</div>

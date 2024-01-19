@@ -67,6 +67,7 @@ use Core\Url;
 
 <h2>Lista samochodów</h2>
 
+<div class="table-responsive">
 <table class="table">
     <thead>
     <tr>
@@ -107,6 +108,7 @@ use Core\Url;
     <?php endif; ?>
     </tbody>
 </table>
+</div>
 
 <p class="text-help">
     Usuwanie samochodów jest niemożliwe aby nie utrudnić pracy wypożyczeń - można jedynie ukryć aby nie można było wypożyczyć danego samochodu.

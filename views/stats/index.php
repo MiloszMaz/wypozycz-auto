@@ -8,6 +8,7 @@
 
 use Core\Url;
 ?>
+<div class="table-responsive">
 <h2>1. Zliczanie ilości i wartości wypożyczonych samochodów po każdym dniu</h2>
 <table class="table">
     <thead>
@@ -101,3 +102,4 @@ use Core\Url;
         <?php endforeach; endforeach; ?>
     </tbody>
 </table>
+</div>
